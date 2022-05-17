@@ -1,0 +1,39 @@
+
+<canvas width="600"  height="400"></canvas>
+
+<script>
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'grey';
+    pincel.fillRect(0, 0, 600, 400);
+
+    
+
+    //trabalhando com eventos
+    function desenhaCirculo(evento){
+        
+        //Ao clicar na tela, ele não mostra as propriedade da nossa tela de pintura (canvas)
+        //Para isso temos que chamar dois métodos que vão fazer isso pela gente, o offsetLeft e offsetTop
+        //Feito isso temos que subtrair por PageX e pageY
+
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+        //Onde clicar eu quero desenhar uma bolinha
+        pincel.fillStyle = 'blue';
+        pincel.beginPath();
+        pincel.arc(x, y, 10, 0, 2*3.14);
+        pincel.fill();
+    }
+
+    // Ao clicar vai chamar a função
+    //Não podemos colocar os parenteses ao lado do nome da função, senão ao carregar a página, ela vai exibir o alerta ao invés de ser por clique
+    //lembrando que quem chama o "exibeAlerta" é o NAVEGADOR
+
+    tela.onclick = desenhaCirculo; 
+
+    //como saber a posição da tela clicada
+
+
+
+</script>
